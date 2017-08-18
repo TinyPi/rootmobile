@@ -37,11 +37,13 @@ int main (int argc, char *argv[])
 		pro_name++;
 		shfile_path = string_capture_right(argv[0], strlen(pro_name));  //get the path of root
 	}
-	else  //run via other ways
+	else  //run when root is in PATH
 	{
 		FILE *pf;
 		char *temp;
-		char which[32] = "which root";
+		char which[32] = "which";
+
+		strcat(which, argv[0]);
 
 		if(NULL != (pf = popen(which, "r")))
 		{
